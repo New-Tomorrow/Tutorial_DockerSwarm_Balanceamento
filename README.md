@@ -18,7 +18,8 @@ Intervalo de portas
 </ol>
 
 <pre>
-<code>curl -fsSL https://get.docker.com -o get-docker.sh
+<code>#!/bin/bash
+curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh</code>
 </pre>
 
@@ -94,6 +95,7 @@ sudo sh get-docker.sh</code>
 <ol>
     <li>Crie um arquivo <code>nginx.conf</code> no próprio usuário mesmo, na máquina master com o seguinte conteúdo:</li>
 </ol>
+<li>O primeiro Ip tem que ser a máquina  master</li>
 
 <pre>
 <code>
@@ -114,15 +116,12 @@ http {
 
 events {}
 </code>
-</pre>
 
-<ol>
-    <li>O primeiro Ip tem que ser a maquina master</li>
-</ol>
+</pre>
 
 
 <ol start="2">
-    <li>Crie um arquivo no usuario <code>Dockerfile</code> com o seguinte conteúdo:</li>
+    <li>Crie um arquivo no usuário <code>Dockerfile</code> com o seguinte conteúdo:</li>
 </ol>
 
 <pre>
@@ -146,13 +145,13 @@ docker build . -t proxy
     <li>Execute o serviço de balanceamento de carga:</li>
 </ol>
 
+<li><code>--restart always </code> para que o contêiner seja executado quando a máquina iniciar </li>
+
 <pre>
 <code>
 docker run --name proxy -d -p 4500:4500 proxy --restart always
 </code>
 </pre>
-
-<li><code>--restart always </code> para que o contêiner seja executado quando a máquina iniciar </li>
 
 
 <h2>Passo 3: Configurar um Volume para o Site</h2>
@@ -174,23 +173,15 @@ docker run --name proxy -d -p 4500:4500 proxy --restart always
 </pre>
 
 <ol start="3">
-    <li>Comando que exibe aonde está localizado o arquivo index.html</li>
+    <li>Com o caminho que exibe onde está localizado o arquivo index.html, altere o html e coloque Master</li>
 </ol>
-
-<pre>
-<code>docker volume inspect app</code>
-</pre>
 
 <ol start="4">
-    <li>Com o caminho que exibe aonde está localizado o arquivo index.html, altere o html e coloque Master</li>
-</ol>
-
-<ol start="5">
     <li>Agora nas máquinas do balanceamento pegue o mesmo caminho, e altere o arquivo index.html para facilitar a visualização da troca, no html coloque node 1 na primeira máquina e node 2 na segunda </li>
 </ol>
 
 
-<ol start="6">
+<ol start="5">
     <li>Para visualizar basta ir para um navegador e colocar o pegar o ip da master e colocar :4500 que foi a porta definida </li>
 </ol>
 
