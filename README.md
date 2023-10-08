@@ -174,15 +174,23 @@ docker run --name proxy -d -p 4500:4500 proxy --restart always
 </pre>
 
 <ol start="3">
+    <li>Comando que exibe aonde está localizado o arquivo index.html</li>
+</ol>
+
+<pre>
+<code>docker volume inspect app</code>
+</pre>
+
+<ol start="4">
     <li>Com o caminho que exibe aonde está localizado o arquivo index.html, altere o html e coloque Master</li>
 </ol>
 
-<ol start="4">
+<ol start="5">
     <li>Agora nas máquinas do balanceamento pegue o mesmo caminho, e altere o arquivo index.html para facilitar a visualização da troca, no html coloque node 1 na primeira máquina e node 2 na segunda </li>
 </ol>
 
 
-<ol start="5">
+<ol start="6">
     <li>Para visualizar basta ir para um navegador e colocar o pegar o ip da master e colocar :4500 que foi a porta definida </li>
 </ol>
 
