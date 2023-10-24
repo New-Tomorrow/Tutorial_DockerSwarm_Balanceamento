@@ -174,6 +174,7 @@ docker run --name proxy -d -p 4500:4500 proxy --restart always
 
 <ol start="3">
     <li>Com o caminho que exibe onde está localizado o arquivo index.html, altere o html e coloque Master</li>
+    Se não aparecer o caminho é esse <code>/var/lib/docker/volumes/app/_data </code>
 </ol>
 
 <ol start="4">
